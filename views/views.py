@@ -39,21 +39,6 @@ async def login(request):
         return RESP.success(body={"id": user_id}, token=token)
 
 
-# async def login(request):
-#     """通过手机号登录"""
-#     data = await request.post()
-#     if not data or not data.get("phone"):
-#         return RESP.param_error("phone missed!")
-#     for i in range(10):
-#         conn = await request.app['db'].acquire()
-#         phone = data.get('phone')
-#         cursor = await conn.execute(model.user.select(f"phone={phone}"))
-#         user = await cursor.first()
-#         # await conn.close()
-#
-#     return RESP.success(body={"id": user.id}, token="ttt")
-
-
 @login_required
 async def user(request):
     """
